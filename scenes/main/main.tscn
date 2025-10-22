@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bw73wvn3a8a7u"]
+
+[ext_resource type="PackedScene" uid="uid://b40bwprxq32a8" path="res://scenes/terrain/terrain.tscn" id="1_hyk8p"]
+[ext_resource type="Script" uid="uid://chwishpe207x4" path="res://scenes/main/main.gd" id="1_k2fmo"]
+[ext_resource type="PackedScene" uid="uid://l25j8kbn3s4s" path="res://scenes/player/player.tscn" id="2_iuonh"]
+[ext_resource type="Shader" uid="uid://foy3grcd53ne" path="res://scenes/main/main.gdshader" id="4_l3cfh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6q06x"]
+shader = ExtResource("4_l3cfh")
+shader_parameter/scanline_strength = 0.1
+shader_parameter/rgb_offset = 2.5
+shader_parameter/scanline_frequency = 0.75
+shader_parameter/blur_strength = 0.25
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_k2fmo")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1024.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1024)
+render_target_update_mode = 4
+
+[node name="GameWorld" type="Node2D" parent="SubViewportContainer/SubViewport"]
+
+[node name="Terrain" parent="SubViewportContainer/SubViewport/GameWorld" instance=ExtResource("1_hyk8p")]
+
+[node name="Player" parent="SubViewportContainer/SubViewport/GameWorld" instance=ExtResource("2_iuonh")]
+position = Vector2(929, 912)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_6q06x")
+offset_right = 1920.0
+offset_bottom = 1024.0
