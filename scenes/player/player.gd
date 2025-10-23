@@ -10,7 +10,7 @@ enum PlayerDirection {
 	RIGHT
 }
 
-const RUN_SPEED = 300.0
+const RUN_SPEED = 100.0
 
 var current_state: PlayerState = PlayerState.IDLE
 var current_direction: PlayerDirection = PlayerDirection.RIGHT
