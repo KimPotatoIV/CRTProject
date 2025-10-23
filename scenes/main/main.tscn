@@ -7,9 +7,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6q06x"]
 shader = ExtResource("4_l3cfh")
-shader_parameter/scanline_strength = 0.1
-shader_parameter/rgb_offset = 2.5
-shader_parameter/scanline_frequency = 0.75
+shader_parameter/scanline_strength = 0.15
+shader_parameter/rgb_offset = 1.0
+shader_parameter/scanline_frequency = 2.0
 shader_parameter/blur_strength = 0.25
 
 [node name="Main" type="Node2D"]

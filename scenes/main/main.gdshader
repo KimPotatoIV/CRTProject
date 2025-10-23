@@ -2,19 +2,19 @@
 // 이 셰이더는 화면의 픽셀 단위로 계산할 거라는 뜻
 shader_type canvas_item;
 
-const vec2 VIEWPORT_SIZE = vec2(1920.0, 1024.0);
+const vec2 VIEWPORT_SIZE = vec2(640.0, 360.0);
 
 // uniform -> 외부에서 값을 바꿀 수 있는 변수
 // hint_range(a, b) -> Inspector에서 슬라이더로 조절 가능하게 함
 
 // 스캔라인 어둡게 하는 정도
-uniform float scanline_strength : hint_range(0.0, 1.0) = 0.35;
+uniform float scanline_strength : hint_range(0.0, 1.0) = 0.15;
 // RGB 색을 좌우로 분리하는 거리
-uniform float rgb_offset : hint_range(0.0, 3.0) = 2.5;
+uniform float rgb_offset : hint_range(0.0, 3.0) = 1.0;
 // 스캔라인 줄 간격
-uniform float scanline_frequency : hint_range(0.1, 1.0) = 1.0;
+uniform float scanline_frequency : hint_range(0.1, 3.0) = 2.0;
 // 블러 효과 강도
-uniform float blur_strength : hint_range(0.0, 1.0) = 1.0;
+uniform float blur_strength : hint_range(0.0, 1.0) = 0.25;
 
 // GPU가 렌더링할 픽셀 하나의 색상과 특성을 결정하는 핵심 함수
 void fragment() {
